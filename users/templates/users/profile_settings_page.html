@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block title %}Смена пароля{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+        <form class="col-8 form-horizontal pb-1" data-toggle="validator" action="" method="post">
+
+            {% csrf_token %}
+
+            <span class="heading mb-0">Изменение пароля</span>
+            <div class="form-group help mb-0">
+                <label for="inputPassword"></label><input type="password" data-toggle="validator" data-minlength="6"
+                                                          class="form-control"
+                                                          name="password1" id="inputPassword"
+                                                          placeholder="Пароль" required>
+                <span class="help-block text-dark">Минимум 6 символов</span>
+                <div>
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-exclamation-circle"></a>
+                </div>
+            </div>
+            <div class="form-group help">
+                <label for="inputPasswordConfirm"></label><input type="password" class="form-control"
+                                                                 name="password2" id="inputPasswordConfirm"
+                                                                 data-match="#inputPassword"
+                                                                 placeholder="Повторите пароль"
+                                                                 data-match-error="Пароли не совпадают!" required>
+                <div class="help-block with-errors"></div>
+                <i class="fa fa-lock"></i>
+                <a href="#" class="fa fa-exclamation-circle"></a>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Изменить пароль</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

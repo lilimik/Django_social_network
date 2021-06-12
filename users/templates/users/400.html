@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}404 error{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid row p-0">
+        <div class="nav_block">
+            <ul class="nav flex-column nav_block_ul">
+                <li class="nav-item">
+                    <a class="nav-link" href="
+                            {% if user.is_authenticated %}{% url 'profile' user.id %}{% else %}{% url 'signIn' %}{% endif %}"><b>Моя
+                        страница</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><b>Сообщения</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><b>Link</b></a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+
+            <h1>УПС, Это 400 даб даб даб</h1>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block title %}Загрузка файла{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+        <form class="col-8 form-horizontal pb-1" enctype="multipart/form-data" data-toggle="validator" action="" method="post">
+
+            {% csrf_token %}
+            <input name="file" type="file">
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Загрузить</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

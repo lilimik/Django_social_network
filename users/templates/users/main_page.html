@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <script src="{% static 'js/root.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    Посты:
+    <br><br>
+    <div id="posts">
+        <p>Загрузка...</p>
+    </div>
+
+{% endblock %}

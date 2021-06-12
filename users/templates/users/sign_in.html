@@ -1,0 +1,55 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+            <form class="col-8 form-horizontal pb-1" data-toggle="validator" action="" method="post">
+
+                {% if form.errors %}
+                    <b>Проверьте следующие поля:</b>
+                    <ul>
+                        {% for field, error in form.errors.items %}
+                            {{ field }}: {{ error }}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% csrf_token %}
+
+                <span class="heading mb-0">АВТОРИЗАЦИЯ</span>
+                <div class="form-group">
+                    <label for="inputEmail"></label><input type="email" name="email" class="form-control"
+                                                           id="inputEmail" placeholder="Почта"
+                                                           data-error="Вы не правильно ввели Ваш E-mail" required>
+                    <i class="fa fa-envelope-open"></i>
+                    <a href="#" class="fa fa-exclamation-circle"></a>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group help">
+                    <label for="inputPassword"></label><input type="password" data-toggle="validator"
+                                                              class="form-control"
+                                                              name="password" id="inputPassword"
+                                                              placeholder="Пароль" required>
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-exclamation-circle"></a>
+                </div>
+                <div class="form-group">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="none" id="checkbox1" name="check">
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">Запомнить</span>
+                    <button type="submit" class="btn btn-default">ВОЙТИ</button>
+                </div>
+            </form>
+        </div>
+
+{% endblock %}

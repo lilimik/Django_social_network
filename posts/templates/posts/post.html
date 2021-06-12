@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+    <b>id поста: {{ post.id }}</b>
+
+    <a href="{% url 'profile' post.owner.id %}">
+    <p>id пользователя: {{ post.owner.id }}</p>
+    </a>
+
+    {% if user.id == post.owner.id %}
+        <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="text" value="{{ post.text }}" required>
+        <button type="submit">изменить</button>
+        </form>
+    {% else %}
+        <p>Текст: {{ post.text }}</p>
+    {% endif %}
+
+    <p>лайки: {{ post.likes_count }}</p>
+    <p>дизлайки: {{ post.dislikes_count }}</p>
+    <p>комменты: {{ post.comments_count }}</p>
+
+{% endblock %}

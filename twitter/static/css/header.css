@@ -1,0 +1,33 @@
+/* Demo Background */
+body {
+    background-image: url('/static/images/main_bg_image.jpg');
+}
+
+.header_image {
+    width: 3vw;
+    height: 3vw;
+}
+
+.head_block {
+    margin-bottom: 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.footer_block {
+    margin-bottom: 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.main_block {
+    position: relative;
+    background-color: white;
+    padding-top: 60px;
+}

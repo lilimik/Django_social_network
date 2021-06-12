@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1>страница пользователя {{ profile_user.id }}</h1>
+    <h3>email: {{ profile_user.email }}</h3>
+    <h4>инста челА: <a href="{% url 'instagram' profile_user.instagram%}">тык</a></h4>
+
+    <b>Подписчиков</b>
+    <button disabled>{{ profile_user.followers_count }}</button>
+    <b>Подписок</b>
+    <button disabled>{{ profile_user.follows_count }}</button>
+
+    <br><br>
+
+    {% if user.id != profile_user.id %}
+        {% if subscribed %}
+            <form action="{% url 'follow' profile_user.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Подписан</button>
+            </form>
+        {% else %}
+            <form action="{% url 'follow' profile_user.id %}" method="get">
+                {% csrf_token %}
+                <button type="submit">Подписаться</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <a href="{% url 'profile_settings' %}"><button type="submit">сменить пароль</button></a>
+    {% endif %}
+
+    <h2>Его посты:</h2>
+    {% for post in posts %}
+        <br>
+        <b>{{ post.id }}</b>
+        <p>{{ post.text }}</p>
+    {% endfor %}
+
+{% endblock %}

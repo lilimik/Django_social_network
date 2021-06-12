@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block title %}Загрузка файла{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+        <h1>Загрузил, поздравляю!</h1>
+    </div>
+
+{% endblock %}
